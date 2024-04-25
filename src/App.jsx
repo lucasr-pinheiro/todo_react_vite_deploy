@@ -1,15 +1,15 @@
-import { useState } from "react";
-
-import Todo from "./components/Todo";
-
-import Search from "./components/Search";
-
-import Filter from "./components/Filter";
-
-import "./App.css";
-import TodoForm from "./components/TodoForm";
+import { useState } from 'react';
+import Todo from './components/Todo';
+import Search from './components/Search';
+import Filter from './components/Filter';
+import './App.css';
+import TodoForm from './components/TodoForm';
+import CEPSearch from './components/CEPSearch'; // Importar o novo componente
 
 const App = () => {
+  // Outros estados omitidos para brevidade
+  const [activeTab, setActiveTab] = useState('todos'); // Adicionar estado para controle de abas
+
   const [todos, setTodos] = useState([
     {
       id: 1,
@@ -52,10 +52,15 @@ const App = () => {
 
   return (
     <div className="app">
-      <h1>Lista de Tarefas</h1>
-      <Search search={search} setSearch={setSearch} />
-      <Filter filter={filter} setFilter={setFilter} setSort={setSort} />
-      <div className="todo-list">
+      <h1>Lista de Tarefas e Busca de CEP</h1>
+      <button onClick={() => setActiveTab('todos')}>Tarefas</button>
+      <button onClick={() => setActiveTab('cep')}>Buscar CEP</button>
+
+      {activeTab === 'todos' ? (
+        <div>
+          <Search search={search} setSearch={setSearch} />
+          <Filter filter={filter} setFilter={setFilter} setSort={setSort} />
+          <div className="todo-list">
         {todos
           .filter((todo) =>
             filter === "All"
@@ -83,6 +88,10 @@ const App = () => {
           ))}
       </div>
       <TodoForm addTodo={addTodo} />
+        </div>
+      ) : (
+        <CEPSearch />
+      )}
     </div>
   );
 };
