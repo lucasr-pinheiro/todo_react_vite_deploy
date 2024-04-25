@@ -65,6 +65,21 @@ button {
   opacity: 0.8;
   transition: 0.3s;
 }
+.button-style {
+  padding: 10px 20px;
+  margin: 5px;
+  background-color: var(--dark-secondary-color);
+  color: white;
+  text-decoration: none;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.button-style:hover {
+  background-color: var(--dark-secondary-color);
+}
 
 button:hover {
   opacity: 1;

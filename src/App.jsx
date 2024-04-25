@@ -1,98 +1,25 @@
-import { useState } from 'react';
-import Todo from './components/Todo';
-import Search from './components/Search';
-import Filter from './components/Filter';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+import TasksPage from './pages/TasksPage';
+import CEPSearchPage from './pages/CEPSearchPage';
 import './App.css';
-import TodoForm from './components/TodoForm';
-import CEPSearch from './components/CEPSearch'; // Importar o novo componente
+import Todo from './components/Todo';
 
 const App = () => {
-  // Outros estados omitidos para brevidade
-  const [activeTab, setActiveTab] = useState('todos'); // Adicionar estado para controle de abas
-
-  const [todos, setTodos] = useState([
-    {
-      id: 1,
-      text: "Criar funcionalidade X no sistema",
-      category: "Trabalho",
-      isCompleted: false,
-    },
-    { id: 2,text: "Ir para a academia", category: "Pessoal", isCompleted: false },
-    {
-      id: 3,
-      text: "Estudar React",
-      category: "Estudos",
-      isCompleted: false,
-    },
-  ]);
-
-  const [filter, setFilter] = useState("All");
-  const [sort, setSort] = useState("Asc");
-
-  const [search, setSearch] = useState("");
-
-  const addTodo = (text, category) => {
-    const newTodos = [...todos, 
-      { id: Math.floor(Math.random() * 1000), text, category, isCompleted: false }
-    ];
-    setTodos(newTodos);
-  };
-
-  const removeTodo = (id) => {
-    const newTodos = [...todos];
-    const filteredTodos = newTodos.filter((todo) => todo.id !== id ?  todo : null)
-    setTodos(filteredTodos);
-  };
-
-  const completeTodo = (id) => {
-    const newTodos = [...todos];
-    newTodos.map((todo) => todo.id === id ?  todo.isCompleted = !todo.isCompleted : todo)
-    setTodos(newTodos);
-  };
-
   return (
-    <div className="app">
-      <h1>Lista de Tarefas e Busca de CEP</h1>
-      <button onClick={() => setActiveTab('todos')}>Tarefas</button>
-      <button onClick={() => setActiveTab('cep')}>Buscar CEP</button>
+    <Router basename="/todo_react_vite_deploy">
+      <div className="app">
+        <h1>Lista de Tarefas e Busca de CEP</h1>
+        <nav>
+          <Link to="/" className="button-style">Tarefas</Link>
+          <Link to="/busca-cep" className="button-style">Buscar CEP</Link>
+        </nav>
 
-      {activeTab === 'todos' ? (
-        <div>
-          <Search search={search} setSearch={setSearch} />
-          <Filter filter={filter} setFilter={setFilter} setSort={setSort} />
-          <div className="todo-list">
-        {todos
-          .filter((todo) =>
-            filter === "All"
-              ? true
-              : filter === "Completed"
-              ? todo.isCompleted
-              : !todo.isCompleted
-          )
-          .filter((todo) =>
-            todo.text.toLowerCase().includes(search.toLowerCase())
-          )
-          .sort((a, b) =>
-            sort === "Asc"
-              ? a.text.localeCompare(b.text)
-              : b.text.localeCompare(a.text)
-          )
-          .map((todo, index) => (
-            <Todo
-              key={index}
-              index={index}
-              todo={todo}
-              completeTodo={completeTodo}
-              removeTodo={removeTodo}
-            />
-          ))}
+        <Routes>
+          <Route path="/" element={<TasksPage />} />
+          <Route path="/busca-cep" element={<CEPSearchPage />} />
+        </Routes>
       </div>
-      <TodoForm addTodo={addTodo} />
-        </div>
-      ) : (
-        <CEPSearch />
-      )}
-    </div>
+    </Router>
   );
 };
 
