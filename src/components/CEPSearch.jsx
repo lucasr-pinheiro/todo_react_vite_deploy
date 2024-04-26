@@ -22,7 +22,7 @@ const CEPSearch = () => {
 
   return (
     <div>
-      <h2>Buscador de CEP</h2>
+      <h2>Pesquisar:</h2>
       <input
         type="text"
         placeholder="Digite o CEP..."

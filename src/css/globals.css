@@ -1,109 +1,45 @@
 body {
   font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
-  padding: 30px;
-  color: #333;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding-top: 60px;
   background-image: url("../img/bg.jpg");
   background-size: cover;
   background-position: center;
 }
 
-.app {
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0.5rem 2rem;
-  border-radius: 10px;
-  background-color: #efefef;
-}
 
 h1 {
   text-align: center;
+  color: var(--primary-color);
+
 }
 
 h2 {
+  color: var(--primary-color);
+
   margin-bottom: 10px;
 }
 
 p {
+  color: var(--primary-color);
+
   margin: 10px 0;
 }
-
-input {
-  box-sizing: border-box;
-}
-
-.todo-list {
-  margin-bottom: 1rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid #555;
-}
-
-.todo {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
+.theme-toggle {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-}
-
-.todo .category {
-  font-size: 0.8em;
-  color: #888;
-}
-
-button {
-  background-color: var(--dark-secondary-color);
-  color: #fff;
-  padding: 5px 10px;
+  background: none;
   border: none;
-  border-radius: 3px;
-  margin-left: 5px;
+  color: var(--text-color);
   cursor: pointer;
-  opacity: 0.8;
-  transition: 0.3s;
-}
-.button-style {
-  padding: 10px 20px;
-  margin: 5px;
-  background-color: var(--dark-secondary-color);
-  color: white;
-  text-decoration: none;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
+  font-size: 1.rem; /* Você pode ajustar isso para corresponder melhor ao tamanho dos outros textos */
 }
 
-.button-style:hover {
-  background-color: var(--dark-secondary-color);
-}
-
-button:hover {
-  opacity: 1;
-}
-
-button.complete {
-  background-color: #5cb85c;
-  color: #fff;
-}
-
-button.remove {
-  background-color: #d9534f;
-  color: #fff;
-}
-
-input[type="text"],
-select {
-  padding: 5px;
-  margin-bottom: 10px;
-  border: 1px solid #ddd;
-  border-radius: 3px;
-  width: 100%;
-}
-
-.todo-form {
-  padding-bottom: 1.5rem;
+.theme-toggle-text {
+  margin-left: 10px;
+  display: none; /* Esconde o texto por padrão */
+  font-size: 1rem; /* Define um tamanho de fonte apropriado para o texto */
+  font-family: Arial, sans-serif; /* Mantém a consistência da fonte */
 }

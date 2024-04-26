@@ -2,4 +2,7 @@
 @import '../src/css/variables.css';
 
 @import '../src/css/components/filter.css';
+@import '../src/css/components/button.css';
+@import '../src/css/components/todo.css';
+@import '../src/css/components/navbar.css';
 

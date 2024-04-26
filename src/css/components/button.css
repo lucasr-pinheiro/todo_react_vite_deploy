@@ -1,0 +1,26 @@
+button:hover {
+    opacity: 1;
+}
+
+button.complete {
+    background-color: #5cb85c;
+    color: #fff;
+}
+
+button.remove {
+    background-color: #d9534f;
+    color: #fff;
+}
+
+
+button {
+    background-color: var(--dark-secondary-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: 0.3s;
+}
