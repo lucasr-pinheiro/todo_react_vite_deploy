@@ -3,6 +3,10 @@ import React, { useState } from 'react';
 import Navbar from './components/Navbar';
 import TasksPage from './pages/TasksPage';
 import CEPSearchPage from './pages/CEPSearchPage';
+import ChartPage from './pages/ChartPage';
+import routes from './routes/Routes';
+
+
 import './App.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
@@ -24,8 +28,9 @@ const App = () => {
       <Navbar isOpen={isOpen} toggleMenu={toggleMenu} toggleTheme={toggleTheme} theme={theme} />
       <div className="app">
         <Routes>
-          <Route path="/" element={<TasksPage />} />
-          <Route path="/busca-cep" element={<CEPSearchPage />} />
+          {routes.map(route => (
+            <Route key={route.path} path={route.path} element={<route.Component />} />
+          ))}
         </Routes>
       </div>
     </Router>
