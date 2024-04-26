@@ -6,7 +6,8 @@ import Todo from './components/Todo';
 import { BrowserRouter as Router, Routes, Route, NavLink } from 'react-router-dom';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import logoSrcLight from './img/icons/lucas-pinheiro-logo1.jpg';
+import logoSrcDark from './img/icons/lucas-pinheiro-logo.jpg';
 const App = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState('light'); // Estado para o tema
@@ -26,7 +27,7 @@ const App = () => {
   }, [theme]);
 
   // Determine qual imagem usar com base no tema atual
-  const logoSrc = theme === 'light' ? '/icons/lucas-pinheiro-logo1.jpg' : '/icons/lucas-pinheiro-logo.jpg';
+  const logoSrc = theme === 'light' ? logoSrcLight : logoSrcDark;
 
   return (
     <Router basename="/todo_react_vite_deploy">
