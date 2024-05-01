@@ -1,3 +1,42 @@
+
+ul {
+    padding-left: 0;
+    margin-left: 0;
+    list-style-type: none; /* Remove marcadores de lista */
+  }
+.device-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin: 5px;
+    background: #f9f9f9;
+    border-radius: 5px;
+  }
+  
+  .device-number {
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: black;
+    border: 2px solid #007BFF; /* Azul, ajuste conforme necessário */
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .device-name {
+    display: flex;
+    align-items: center;
+  }
+  
+  .sidebar-collapsed .device-name {
+    display: none; /* Oculta o nome quando a sidebar está recolhida */
+  }
+  
+
 .error-message {
     color: red;
     font-weight: bold;

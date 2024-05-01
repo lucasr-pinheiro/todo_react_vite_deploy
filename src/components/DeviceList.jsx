@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import api from '../services/deviceListAPI';
+import { Link } from 'react-router-dom'; // Import Link
 
-const DeviceList = () => {
+const DeviceList = ({ isOpen }) => { // Adicione o prop isOpen se for passar diretamente para o componente
     const [devices, setDevices] = useState([]);
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -32,21 +33,23 @@ const DeviceList = () => {
 
     return (
         <div>
-            <h2>Lista de Dispositivos:</h2>
             {error ? (
-                <p className="error-message"><i className="fas fa-exclamation-circle"></i>{error}</p>
+                <p className="error-message">{error}</p>
             ) : isLoading ? (
                 <p className="loading-message">Carregando dispositivos...</p>
             ) : devices.length > 0 ? (
                 <ul>
                     {devices.map(device => (
-                        <li key={device.id}>
-                            ({device.numeroMaquina}) {device.name}
+                        <li key={device.id} className="device-item">
+                            <div className="device-number">{device.numeroMaquina}</div>
+                            <Link to={`/device-list/device/${device.id}`} className={`device-name ${!isOpen ? 'sidebar-collapsed' : ''}`}>
+                                {device.name}
+                            </Link>
                         </li>
                     ))}
                 </ul>
             ) : (
-                <p className="no-devices"><i className="fas fa-search"></i>Nenhum dispositivo encontrado.</p>
+                <p className="no-devices">Nenhum dispositivo encontrado.</p>
             )}
         </div>
     );

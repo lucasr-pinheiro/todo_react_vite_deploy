@@ -11,6 +11,8 @@
     margin: 0 10px;
     color: var(--text-color);
     text-decoration: none;
+    justify-content: flex-end; 
+
     transition: color 0.3s;
 }
 
@@ -31,14 +33,13 @@
     top: 0;
     left: 0;
     right: 0;
+    height: var(--navbar-height); 
     z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
     color: var(--tertiary-color);
-
 }
-
 .menu-icon {
     background: none;
     border: none;
