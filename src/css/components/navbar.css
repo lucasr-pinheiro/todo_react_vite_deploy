@@ -1,12 +1,4 @@
-.app {
-    max-width: 600px;
-    margin: 40px auto;
-    padding: 0.5rem 2rem;
-    border-radius: 10px;
-    background-color: var(--background-color);
-    position: relative;
-    z-index: 1;
-}
+
 
 .menu {
     display: flex;

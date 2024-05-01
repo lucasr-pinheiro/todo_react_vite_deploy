@@ -5,4 +5,6 @@
 @import '../src/css/components/button.css';
 @import '../src/css/components/todo.css';
 @import '../src/css/components/navbar.css';
-
+@import '../src/css/components/mensage.css';
+@import '../src/css/components/sidebar.css';
+@import '../src/css/components/dashboard.css';

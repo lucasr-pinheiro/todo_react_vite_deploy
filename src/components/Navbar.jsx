@@ -1,18 +1,26 @@
-// src/components/Navbar.js
 import React, { useEffect } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSun, faMoon } from '@fortawesome/free-solid-svg-icons';
 import logoSrcLight from '../img/icons/lucas-pinheiro-logo1.jpg';
 import logoSrcDark from '../img/icons/lucas-pinheiro-logo.jpg';
-import routes from '../routes/Routes'; // Importa as rotas aqui
+import routes from '../routes/Routes';
 
 const Navbar = ({ isOpen, toggleMenu, toggleTheme, theme }) => {
+  const location = useLocation();
+  
   useEffect(() => {
     document.body.setAttribute('data-theme', theme);
   }, [theme]);
 
   const logoSrc = theme === 'light' ? logoSrcLight : logoSrcDark;
+
+  const handleNavLinkClick = (path) => {
+    toggleMenu(false);
+    if (location.pathname === path) {
+      window.location.reload();
+    }
+  };
 
   return (
     <div className="navbar">
@@ -24,7 +32,11 @@ const Navbar = ({ isOpen, toggleMenu, toggleTheme, theme }) => {
       </button>
       <nav className={`menu ${isOpen ? "show" : ""}`}>
         {routes.map(route => (
-          <NavLink key={route.path} to={route.path} className={({ isActive }) => isActive ? "nav-link active" : "nav-link"} onClick={() => toggleMenu(false)}>
+          <NavLink 
+            key={route.path} 
+            to={route.path} 
+            className={({ isActive }) => isActive ? "nav-link active" : "nav-link"}
+            onClick={() => handleNavLinkClick(route.path)}>
             {route.label}
           </NavLink>
         ))}
